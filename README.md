@@ -1,6 +1,6 @@
 # Node.JS Hypertext Preprocessor
 
-[![Package Version](https://img.shields.io/npm/v/NHP.svg)](https://www.npmjs.org/package/NHP)
+[![Package Version](https://img.shields.io/npm/v/@sovietxd/nhp.svg)](https://www.npmjs.org/package/@sovietxd/nhp)
 
 What is it?
 --------
