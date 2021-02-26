@@ -43,13 +43,13 @@ class NHP {
         this.webMap = webMap;
     }
     bind($) {
-        var use = this.use;
+        var obj = this;
         return async function(req, res) {
-            use($, req, res);
+            obj.use(obj, $, req, res);
         }
     }
-    async use($, req, res) {
-        var elem = this.webMap[req.path];
+    async use(obj, ext, req, res) {
+        var elem = obj.webMap[req.path];
         if (elem instanceof Preprocessor) {
             return res.setHeader("Content-Type", "text/html;charset=utf-8").end((await elem.use($, req, res)), 'utf8');
         }
