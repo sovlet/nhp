@@ -44,7 +44,7 @@ class NHP {
     }
     bind($) {
         return async function(req, res) {
-            await this.use($, req, res);
+            this.use($, req, res);
         }
     }
     async use($, req, res) {
