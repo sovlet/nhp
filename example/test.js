@@ -12,8 +12,6 @@ var nhpCtx = {
 
 nhp.setWebMap(nhp.genWebMap(path.join(__dirname, 'www')));
 
-app.use('/', (req, res) => {
-	nhp.use(nhpCtx, req, res)
-});
+app.use('/', nhp.bind(nhpCtx));
 
 app.listen(port, () => {})

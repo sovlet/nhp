@@ -23,7 +23,7 @@ class Preprocessor {
         };
         return this;
     }
-    use($, req, res) {
+    async use($, req, res) {
         var ret = "";
         var context = vm.createContext({
             "$": Ext.extend($, {
@@ -37,8 +37,7 @@ class Preprocessor {
                     ret = ret + this.parsed[i][1];
                     break;
                 case "js":
-                    this.parsed[i][1].runInContext(context);
-                    ret = ret + context.$.return;
+                    ret = ret + (await this.parsed[i][1].runInContext(context));
                     break;
                 default:
                     break;

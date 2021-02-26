@@ -42,10 +42,15 @@ class NHP {
     setWebMap(webMap) {
         this.webMap = webMap;
     }
-    use($, req, res) {
+    bind($) {
+        return async function(req, res) {
+            await this.use($, req, res);
+        }
+    }
+    async use($, req, res) {
         var elem = this.webMap[req.path];
         if (elem instanceof Preprocessor) {
-            return res.setHeader("Content-Type", "text/html;charset=utf-8").end(elem.use($, req, res), 'utf8');
+            return res.setHeader("Content-Type", "text/html;charset=utf-8").end((await elem.use($, req, res)), 'utf8');
         }
         if (elem instanceof Error) {
             return res.setHeader("Content-Type", "text/html;charset=utf-8").end('<html><head></head><body><h1>NHP Error at: ' + req.path + '</h1><br><b>' + elem.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>') + '</b></body></html>', 'utf8');

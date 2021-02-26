@@ -23,9 +23,7 @@ var nhpCtx = {       // Create NHP context object (these properties will be avai
 
 nhp.setWebMap(nhp.genWebMap(path.join(__dirname, 'www'))); // Set main directory to ./www
 
-app.use('/', (req, res) => {
-	nhp.use(nhpCtx, req, res) // Use NHP handler
-});
+app.use('/', nhp.bind(nhpCtx)); // Use NHP handler
 
 app.listen(port, () => {})
 ```
