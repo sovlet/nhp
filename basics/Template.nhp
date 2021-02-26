@@ -18,5 +18,3 @@ catch(e)
 	+ e.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>')
 	+ '</b></body></html>';
 };
-
-$.return;
