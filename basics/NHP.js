@@ -43,8 +43,9 @@ class NHP {
         this.webMap = webMap;
     }
     bind($) {
+        var use = this.use;
         return async function(req, res) {
-            this.use($, req, res);
+            use($, req, res);
         }
     }
     async use($, req, res) {
