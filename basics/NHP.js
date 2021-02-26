@@ -48,7 +48,7 @@ class NHP {
             obj.use(obj, $, req, res);
         }
     }
-    async use(obj, ext, req, res) {
+    async use(obj, $, req, res) {
         var elem = obj.webMap[req.path];
         if (elem instanceof Preprocessor) {
             return res.setHeader("Content-Type", "text/html;charset=utf-8").end((await elem.use($, req, res)), 'utf8');
