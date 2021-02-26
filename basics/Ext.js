@@ -3,7 +3,7 @@ const path = require('path');
 
 Ext = {
     readTemplate: function(name) {
-        return fs.readFileSync(path.join(__dirname, name + '.nhp'));
+        return fs.readFileSync(path.join(__dirname, name + '.nhp'), 'utf8');
     },
     parseDirectories: function(dir) {
         const dirents = fs.readdirSync(dir, {
