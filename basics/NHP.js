@@ -1,3 +1,4 @@
+const path = require('path');
 const Ext = require('./Ext.js');
 const Preprocessor = require('./Preprocessor.js');
 const Template = Ext.readTemplate('Template');
@@ -10,7 +11,7 @@ class NHP {
         for (let i = 0; i < directories.length; i++) {
             var dir = directories[i];
             var rDir = dir.substr(baseDir.length);
-            switch (path.extname(dir)) {
+            switch(path.extname(dir)) {
                 case ".nhp":
                     if (!webMap[w]) {
                         try {
