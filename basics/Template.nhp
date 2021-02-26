@@ -1,0 +1,22 @@
+$.return = '';
+
+function echo(...args) {
+	args.forEach(function(s){
+		$.return = $.return
+		+ s;
+	});
+};
+
+try { 
+	(function() {
+		<?code>
+	})();
+} 
+catch(e)
+{
+	$.return = '<html><head></head><body><h1>NHP Internal Error</h1><br><b>'
+	+ e.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>')
+	+ '</b></body></html>';
+};
+
+$.return;

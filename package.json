@@ -1,0 +1,37 @@
+{
+  "name": "NHP",
+  "description": "Fast hypertext preprocessor 'aka PHP'.",
+  "version": "1.0.0",
+  "author": "soviet",
+  "contributors": [
+    "soviet"
+  ],
+  "license": "GPL v2",
+  "repository": "sovlet/nhp",
+  "homepage": "https://vk.com/sovlet/",
+  "keywords": [
+    "soviet",
+    "web",
+    "hypertext",
+    "preprocessor",
+    "php",
+    "nhp",
+    "nodehp",
+    "jhp"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "basics/",
+    "basics/Ext.js",
+    "basics/NHP.js",
+    "basics/Preprocessor.js",
+    "basics/Template.nhp"
+  ],
+  "scripts": {}
+}
