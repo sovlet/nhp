@@ -7,8 +7,7 @@ const NHP = require('@sovietxd/nhp');
 var nhp = new NHP();
 var nhpCtx = {
 	"process": process,
-	"app": app,
-	"db": db,
+	"app": app
 }
 
 nhp.setWebMap(nhp.genWebMap(path.join(__dirname, 'www')));
