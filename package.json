@@ -1,7 +1,7 @@
 {
   "name": "@sovietxd/nhp",
   "description": "Fast hypertext preprocessor 'aka PHP'.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "sovietxd",
   "contributors": [
     "sovietxd"

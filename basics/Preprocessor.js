@@ -1,3 +1,4 @@
+const Ext = require('./Ext.js');
 const fs = require('fs');
 const vm = require('vm');
 
@@ -25,10 +26,9 @@ class Preprocessor {
     use($, req, res) {
         var ret = "";
         var context = vm.createContext({
-            "$": extend($, {
+            "$": Ext.extend($, {
                 "req": req,
-                "res": res,
-                "extend": extend
+                "res": res
             })
         });
         for (let i = 0; i < this.parsed.length; i++) {
