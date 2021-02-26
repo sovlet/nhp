@@ -2,7 +2,6 @@ const path = require('path');
 const Ext = require('./Ext.js');
 const Preprocessor = require('./Preprocessor.js');
 const Template = Ext.readTemplate('Template');
-console.log(Template);
 
 class NHP {
     constructor() {}
@@ -24,7 +23,7 @@ class NHP {
                     break;
                 case "":
                     try {
-                        webMap[rDir] = new Preprocessor(dir + "/index.nhp").process();
+                        webMap[rDir] = new Preprocessor(dir + "/index.nhp").process(Template);
                         webMap[rDir + "/"] = webMap[rDir];
                         webMap[rDir + "/index.nhp"] = webMap[rDir];
                     } catch (e) {
