@@ -9,7 +9,7 @@
   "license": "GPL-2.0-only",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sovlet/node-hp.git"
+    "url": "git://github.com/sovlet/nhp.git"
   },
   "homepage": "https://vk.com/sovlet/",
   "keywords": [
