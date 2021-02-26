@@ -2,6 +2,7 @@ const path = require('path');
 const Ext = require('./Ext.js');
 const Preprocessor = require('./Preprocessor.js');
 const Template = Ext.readTemplate('Template');
+console.log(Template);
 
 class NHP {
     constructor() {}
