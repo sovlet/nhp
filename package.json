@@ -1,13 +1,16 @@
 {
-  "name": "NHP",
+  "name": "@sovietxd/nhp",
   "description": "Fast hypertext preprocessor 'aka PHP'.",
   "version": "1.0.0",
-  "author": "soviet",
+  "author": "sovietxd",
   "contributors": [
-    "soviet"
+    "sovietxd"
   ],
-  "license": "GPL v2",
-  "repository": "sovlet/nhp",
+  "license": "GPL-2.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sovlet/node-hp.git"
+  },
   "homepage": "https://vk.com/sovlet/",
   "keywords": [
     "soviet",
@@ -33,5 +36,9 @@
     "basics/Preprocessor.js",
     "basics/Template.nhp"
   ],
-  "scripts": {}
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/sovlet/node-hp/issues"
+  },
+  "main": "index.js"
 }
