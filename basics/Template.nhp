@@ -10,19 +10,19 @@ function exit() {
 	throw new Error({});
 }
 
-$.run = (async function() {
-	try { 
-		<?code>
-		return $.return;
-	} 
-	catch(e)
-	{
-		if(e.message != {}) {
-			return '<html><head></head><body><h1>NHP Internal Error</h1><br><b>'
-			+ e.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>')
-			+ '</b></body></html>';
-		}
-	};
-});
-
-$.run();
+(async function() {
+	await (async function() {
+		try { 
+			<?code>
+		} 
+		catch(e)
+		{
+			if(e.message != {}) {
+				$.return = '<html><head></head><body><h1>NHP Internal Error</h1><br><b>'
+				+ e.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>')
+				+ '</b></body></html>';
+			}
+		};
+	})();
+	return $.return;
+})();
