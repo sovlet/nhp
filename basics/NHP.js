@@ -13,7 +13,7 @@ class NHP {
             var rDir = dir.substr(baseDir.length);
             switch(path.extname(dir)) {
                 case ".nhp":
-                    if (!webMap[w]) {
+                    if (!webMap[rDir]) {
                         try {
                             webMap[rDir] = new Preprocessor(dir).process(Template);
                         } catch (e) {
