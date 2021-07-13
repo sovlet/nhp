@@ -4,30 +4,29 @@
 
 What is it?
 --------
-Node.JS Hypertext Preprocessor is a fast hypertext preprocessor 'aka PHP'.
+Node.JS Hypertext Preprocessor is a fast hypertext preprocessor "aka PHP"
 
 Example of usage
 --------
 ```js
-const path = require('path');
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000
-const NHP = require('@sovietxd/nhp');
+const express = require('express')
+const app = express()
 
-var nhp = new NHP(); // Create NHP object
-var nhpCtx = {       // Create NHP context object (these properties will be available under $ object in all .nhp scripts)
-	"process": process,
-	"app": app
+const www = './www'
+const port = process.env.PORT || 3000
+
+const { NHP } = require('nhp');
+
+var nhp = new NHP('./www');
+var ctx = {
+    process: process,
+    app: app
 }
 
-nhp.setWebMap(nhp.genWebMap(path.join(__dirname, 'www'))); // Set main directory to ./www
-
-app.use('/', nhp.bind(nhpCtx)); // Use NHP handler
-
+app.use('/', nhp.use(ctx))
 app.listen(port, () => {})
 ```
 
 License
 -----
-NHP is licensed under [GPL 2.0](LICENSE.md)
+NHP is licensed under [GPL v2.0](LICENSE.md)
