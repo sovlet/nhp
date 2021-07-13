@@ -1,44 +1,34 @@
 {
-  "name": "@sovietxd/nhp",
-  "description": "Fast hypertext preprocessor 'aka PHP'.",
-  "version": "1.1.7",
-  "author": "sovietxd",
-  "contributors": [
-    "sovietxd"
-  ],
-  "license": "GPL-2.0-only",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sovlet/nhp.git"
-  },
-  "homepage": "https://vk.com/sovlet/",
-  "keywords": [
-    "soviet",
-    "web",
-    "hypertext",
-    "preprocessor",
-    "php",
-    "nhp",
-    "nodehp",
-    "jhp"
-  ],
-  "dependencies": {},
-  "devDependencies": {},
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "files": [
-    "LICENSE",
-    "README.md",
-    "basics/",
-    "basics/Ext.js",
-    "basics/NHP.js",
-    "basics/Preprocessor.js",
-    "basics/Template.nhp"
-  ],
-  "scripts": {},
-  "bugs": {
-    "url": "https://github.com/sovlet/node-hp/issues"
-  },
-  "main": "index.js"
+    "name": "nhp",
+    "description": "Node.JS Hypertext Preprocessor is a fast hypertext preprocessor \"aka PHP\"",
+    "version": "2.0.0",
+    "keywords": [
+        "hypertext",
+        "preprocessor",
+        "nhp"
+    ],
+    "maintainers": [
+        {
+            "name": "sovlet",
+            "email": "soviet@s0viet.ru",
+            "web": "https://s0viet.ru/"
+        }
+    ],
+    "bugs": {
+        "web": "https://github.com/sovlet/nhp/issues"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/sovlet/nhp.git"
+        }
+    ],
+    "licenses": [
+        {
+            "name": "GNU General Public License v2.0",
+            "url": "https://github.com/sovlet/nhp/blob/master/LICENSE"
+        }
+    ],
+    "main": "index.js",
+    "homepage": "https://github.com/sovlet/nhp"
 }
