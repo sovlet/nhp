@@ -5,5 +5,6 @@
 //  Web:        https://s0viet.ru/
 
 module.exports = {
+	... require('@nhp/src/pkg'),
 	... require('@nhp/src/nhp')
 }
