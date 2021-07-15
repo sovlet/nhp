@@ -24,7 +24,7 @@ class NHP {
 					this.webMap[rel] = this.preprocess(dir)
 					break
 				case '':
-					this.webMap[rel] = this.webMap[rel + '/'] = this.webMap[rel + '/index.php'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.html']
+					this.webMap[rel] = this.webMap[rel + '/'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.php'] || this.webMap[rel + '/index.html']
 					break
 				default:
 					this.webMap[rel] = dir
