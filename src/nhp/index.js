@@ -19,15 +19,25 @@ class NHP {
 			let rel = dir.substr(full.length).replace(/\\\\*/g, '/')
 			switch(path.extname(dir)) {
 				case '.nhp':
-					if(this.webMap[rel] !== undefined)
-						break
-					this.webMap[rel] = this.preprocess(dir)
+					this.webMap[rel] = {
+						type: 'script',
+						units: this.preprocess(dir)
+					}
+					break
+				case '.php':
+					this.webMap[rel] = {
+						type: 'html',
+						content: fs.readFileSync(dir, 'utf8')
+					}
 					break
 				case '':
-					this.webMap[rel] = this.webMap[rel + '/'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.php'] || this.webMap[rel + '/index.html']
+					this.webMap[rel + '/'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.php'] || this.webMap[rel + '/index.html'] || this.webMap[rel + '/index.htm']
 					break
 				default:
-					this.webMap[rel] = dir
+					this.webMap[rel] = {
+						type: 'file',
+						path: dir
+					}
 			}
 		}
 	}
@@ -87,13 +97,19 @@ class NHP {
 	}
 	async query(context, req, res) {
 		let data = this.webMap[req.path]
-		if(data === undefined || data === '')
-			return
-		if(typeof data === "string")
-			return res.status(200).sendFile(data)
-		if(data instanceof Array)
-			return res.status(200).setHeader("Content-Type", "text/htmlcharset=utf-8").end(await this.process(context, data), 'utf8')
-		return false
+		if(data === undefined)
+			return false
+		switch(data.type) {
+			case 'script':
+				let result = await this.process(context, data.units)
+				if(result === '')
+					return
+				return res.status(200).setHeader("Content-Type", "text/html;charset=utf-8").end(result, 'utf8')
+			case 'html':
+				return res.status(200).setHeader("Content-Type", "text/html;charset=utf-8").end(data.content, 'utf8')
+			case 'file':
+				return res.status(200).sendFile(data.path)
+		}
 	}
 }
 
