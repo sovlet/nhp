@@ -20,11 +20,11 @@ class NHP {
 			switch(path.extname(dir)) {
 				case '.nhp':
 					if(this.webMap[rel] !== undefined)
-						continue
+						break
 					this.webMap[rel] = this.preprocess(dir)
 					break
 				case '':
-					this.webMap[rel] = this.webMap[rel + '/'] = this.webMap[rel + '/index.php'] = this.webMap[rel + '/index.nhp'] || this.preprocess(dir + '\\\\index.nhp') || this.webMap[rel + '/index.html']
+					this.webMap[rel] = this.webMap[rel + '/'] = this.webMap[rel + '/index.php'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.html']
 					break
 				default:
 					this.webMap[rel] = dir
@@ -32,16 +32,17 @@ class NHP {
 		}
 	}
 	parseDir(dir) {
-		let array = [dir];
-		let elems = fs.readdirSync(dir, {withFileTypes: true});
+		let array = []
+		let elems = fs.readdirSync(dir, {withFileTypes: true})
 		for(let elem of elems) {
 			if(elem.isDirectory()) {
-				array = array.concat(this.parseDir(path.resolve(dir, elem.name)));
+				array = array.concat(this.parseDir(path.resolve(dir, elem.name)))
 				continue
 			}
-			array.push(path.resolve(dir, elem.name));
+			array.push(path.resolve(dir, elem.name))
 		}
-		return array;
+		array.push(dir)
+		return array
 	}
 	use(context) {
 		return async(req, res, next) => {
@@ -75,7 +76,7 @@ class NHP {
 					content += context.__return__
 				} catch(error) {
 					content += '<html><head></head><body><h1>Fatal error</h1><br><b>'
-					content += error.stack.replace(/</gi, '&lt;').replace(/\n/gs, '<br>')
+					content += error.stack.replace(/</gi, '&lt').replace(/\n/gs, '<br>')
 					content += '</b></body></html>'
 				}
 				continue
@@ -86,11 +87,13 @@ class NHP {
 	}
 	async query(context, req, res) {
 		let data = this.webMap[req.path]
+		if(data === undefined or data === '')
+			return
 		if(typeof data === "string")
 			return res.status(200).sendFile(data)
 		if(data instanceof Array)
-			return res.status(200).setHeader("Content-Type", "text/html;charset=utf-8").end(await this.process(context, data), 'utf8')
-		return false;
+			return res.status(200).setHeader("Content-Type", "text/htmlcharset=utf-8").end(await this.process(context, data), 'utf8')
+		return false
 	}
 }
 
