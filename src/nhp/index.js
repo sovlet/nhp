@@ -87,7 +87,7 @@ class NHP {
 	}
 	async query(context, req, res) {
 		let data = this.webMap[req.path]
-		if(data === undefined or data === '')
+		if(data === undefined || data === '')
 			return
 		if(typeof data === "string")
 			return res.status(200).sendFile(data)
