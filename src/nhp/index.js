@@ -111,7 +111,7 @@ class NHP {
 		switch(data.type) {
 			case 'script':
 				let result = await this.process(context, data.units)
-				if(result === '')
+				if(res.writableEnded)
 					return
 				return res.status(200).setHeader("Content-Type", "text/html;charset=utf-8").end(result, 'utf8')
 			case 'html':
