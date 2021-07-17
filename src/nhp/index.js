@@ -92,6 +92,7 @@ class NHP {
 			if(unit instanceof vm.Script) {
 				try {
 					await unit.runInContext(context)
+					await context.__run__()
 					content += context.__return__
 				} catch(error) {
 					content += '<html><head></head><body><h1>Fatal error</h1><br><b>'
