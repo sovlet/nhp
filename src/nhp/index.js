@@ -18,20 +18,29 @@ class NHP {
 		for(let dir of parsed) {
 			let rel = dir.substr(full.length).replace(/\\\\*/g, '/')
 			switch(path.extname(dir)) {
+				case '.php':
 				case '.nhp':
 					this.webMap[rel] = {
 						type: 'script',
 						units: this.preprocess(dir)
 					}
 					break
-				case '.php':
+				/* 
+				case '.htm':
 					this.webMap[rel] = {
 						type: 'html',
 						content: fs.readFileSync(dir, 'utf8')
 					}
 					break
+				*/
 				case '':
-					this.webMap[rel + '/'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.php'] || this.webMap[rel + '/index.html'] || this.webMap[rel + '/index.htm']
+					let dest = this.webMap[rel + '/'] = this.webMap[rel + '/index.nhp'] || this.webMap[rel + '/index.php'] || this.webMap[rel + '/index.html'] || this.webMap[rel + '/index.htm']
+					if(dest === undefined)
+						break
+					this.webMap[rel] = {
+						type: 'redirect',
+						dest: rel + '/'
+					}
 					break
 				default:
 					this.webMap[rel] = {
@@ -109,6 +118,8 @@ class NHP {
 				return res.status(200).setHeader("Content-Type", "text/html;charset=utf-8").end(data.content, 'utf8')
 			case 'file':
 				return res.status(200).sendFile(data.path)
+			case 'redirect':
+				return res.redirect(301, data.dest + (req._parsedUrl.query === null ? '' : ('?' + req._parsedUrl.query)))
 		}
 	}
 }
